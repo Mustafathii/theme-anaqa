@@ -20,9 +20,70 @@ body.theme-raed {
   }
 }
 
+// Product card: flat editorial card on the ivory canvas, image does the talking.
+.s-product-card-vertical {
+  &.s-product-card-entry {
+    background: transparent;
+    border-radius: 0;
+  }
+
+  &.s-product-card-shadow:hover {
+    box-shadow: none;
+  }
+
+  .s-product-card-image {
+    background-color: #f1ece5;
+    border-radius: var(--anaqa-radius);
+  }
+
+  .s-product-card-content {
+    padding-inline: 0;
+  }
+
+  .s-product-card-content-title a {
+    font-weight: 500;
+    color: var(--anaqa-ink);
+
+    &:hover {
+      color: var(--anaqa-ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  .s-product-card-wishlist-btn button {
+    border-radius: 50%;
+  }
+}
+
+// Footer: ink background (dark) or warm ivory (light), solid hairlines instead of dashes.
+.store-footer {
+  background-color: #111;
+
+  .store-footer__inner {
+    background-color: var(--anaqa-ink);
+    border-bottom-style: solid;
+  }
+
+  .social-link {
+    border-radius: 50%;
+  }
+
+  .footer-is-light & {
+    background-color: #f1ece5;
+    color: var(--anaqa-ink);
+
+    .store-footer__inner {
+      background-color: var(--anaqa-bg);
+      border-bottom-color: var(--anaqa-line);
+    }
+  }
+}
+
 // Fashion stores shoot products in portrait; merchants can switch this off in theme settings.
 .anaqa-portrait-cards .s-product-card-vertical .s-product-card-image {
   flex: none;
   height: auto;
+  max-height: none;
   aspect-ratio: 3 / 4;
 }
