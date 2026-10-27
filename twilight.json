@@ -1,7 +1,7 @@
 {
     "name": {
-        "ar": "أناقة",
-        "en": "Anaqa"
+        "ar": "سيلاس",
+        "en": "Selas"
     },
     "repository": "TODO: your GitHub repo URL",
     "author_email": "TODO: support email",
@@ -29,7 +29,7 @@
             "id": "static-anaqa-label",
             "type": "static",
             "format": "title",
-            "value": "<div class='rounded-lg' style='background-color: #1b1b1b; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #fbf8f4;font-size: 15px; font-weight: bold;'>إعدادات أناقة</h6></div>",
+            "value": "<div class='rounded-lg' style='background-color: #1b1b1b; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #fbf8f4;font-size: 15px; font-weight: bold;'>إعدادات سيلاس</h6></div>",
             "variant": "h6"
         },
         {
@@ -1612,7 +1612,7 @@
     ],
     "support_url": "TODO: support website",
     "description": {
-        "ar": "ثيم أناقة لمتاجر الأزياء والتجميل: تصميم تحريري راقٍ، صور كبيرة، وأقسام مخصصة للإطلالات والعروض.",
-        "en": "Anaqa is an editorial theme for fashion and beauty stores: large imagery, refined typography and sections built for looks and offers."
+        "ar": "ثيم سيلاس لمتاجر الأزياء والتجميل: تصميم تحريري راقٍ، صور كبيرة، وأقسام مخصصة للإطلالات والعروض.",
+        "en": "Selas is an editorial theme for fashion and beauty stores: large imagery, refined typography and sections built for looks and offers."
     }
 }

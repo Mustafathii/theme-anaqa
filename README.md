@@ -1,4 +1,4 @@
-# Anaqa (أناقة)
+# Selas (سيلاس)
 
 A Salla Twilight theme for fashion & beauty stores. It is based on Salla's open-source [Theme Raed](https://github.com/SallaApp/theme-raed) (MIT).
 

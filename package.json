@@ -1,7 +1,7 @@
 {
-  "name": "theme-anaqa",
+  "name": "theme-selas",
   "version": "0.1.0",
-  "description": "Anaqa: a Salla Twilight theme for fashion & beauty stores",
+  "description": "Selas: a Salla Twilight theme for fashion & beauty stores",
   "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
