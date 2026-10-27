@@ -1,0 +1,228 @@
+// Anaqa home sections: editorial-hero, category-stories, flash-discount, shop-the-look.
+// Logical properties (inline-start/end) keep every block correct in both RTL and LTR.
+
+:root {
+  --anaqa-bg: #fbf8f4;
+  --anaqa-ink: #1b1b1b;
+  --anaqa-muted: #6f6a64;
+  --anaqa-line: #e8e1d9;
+  --anaqa-radius: 2px;
+}
+
+.anaqa-eyebrow {
+  margin-bottom: .75rem;
+  font-size: .8rem;
+  color: var(--anaqa-muted);
+  text-transform: uppercase;
+}
+
+[dir="ltr"] .anaqa-eyebrow {
+  letter-spacing: .18em;
+}
+
+.anaqa-section-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--anaqa-ink);
+}
+
+.anaqa-btn {
+  display: inline-block;
+  padding: .85rem 2.25rem;
+  border: 1px solid currentColor;
+  border-radius: var(--anaqa-radius);
+  font-weight: 700;
+  transition: background-color .25s, color .25s;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-reverse);
+  }
+}
+
+// Editorial hero
+.anaqa-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 70vh;
+  color: #fff;
+  overflow: hidden;
+
+  &__media {
+    position: absolute;
+    inset: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &--overlay &__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(0 0 0 / .55), rgb(0 0 0 / .05) 60%);
+  }
+
+  &__content {
+    position: relative;
+    padding-block: 4rem;
+  }
+
+  &__text {
+    max-width: 36rem;
+  }
+
+  &--centered &__content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .anaqa-eyebrow {
+    color: inherit;
+    opacity: .85;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    opacity: .9;
+  }
+
+  .anaqa-btn {
+    margin-top: 2rem;
+  }
+}
+
+// Category stories
+.anaqa-stories {
+  &__list {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding-bottom: .5rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+    width: 6.5rem;
+    text-align: center;
+  }
+
+  &__ring {
+    display: block;
+    padding: 3px;
+    border-radius: 50%;
+    background: conic-gradient(from 210deg, var(--color-primary), var(--color-primary-light), var(--color-primary));
+    transition: transform .25s;
+
+    img {
+      display: block;
+      width: 88px;
+      height: 88px;
+      border: 3px solid var(--anaqa-bg);
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--anaqa-bg);
+    }
+  }
+
+  &__link:hover &__ring,
+  &__link:focus-visible &__ring {
+    transform: scale(1.05);
+  }
+
+  &__name {
+    font-size: .875rem;
+    color: var(--anaqa-ink);
+  }
+}
+
+// Flash discount
+.anaqa-flash {
+  &[hidden] {
+    display: none;
+  }
+
+  .container {
+    padding-block: 2rem;
+    border-block: 1px solid var(--anaqa-line);
+  }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .anaqa-section-title {
+      margin-bottom: .25rem;
+    }
+  }
+
+  &__subtitle {
+    color: var(--anaqa-muted);
+  }
+}
+
+// Shop the look
+.anaqa-look {
+  &__grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 5fr 7fr;
+      gap: 4rem;
+    }
+  }
+
+  &--image-end &__media {
+    @media (min-width: 1024px) {
+      order: 2;
+    }
+  }
+
+  &__media img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--anaqa-radius);
+  }
+
+  &__description {
+    margin-bottom: 1.5rem;
+    color: var(--anaqa-muted);
+  }
+}

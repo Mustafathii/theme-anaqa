@@ -1,0 +1,34 @@
+{#
+| Variable                  | Type    | Description                                                        |
+|---------------------------|---------|--------------------------------------------------------------------|
+| component.title           | string  |                                                                    |
+| component.subtitle        | ?string |                                                                    |
+| component.ends_at         | string  | YYYY-MM-DD (Riyadh time); home.js renders the countdown and hides  |
+|                           |         | the section once this date has passed                              |
+| component.display_all_url | ?string |                                                                    |
+| position                  | int     | Sorting number start from zero                                     |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-flash-discount" class="s-block anaqa-flash">
+    <div class="container">
+        <div class="anaqa-flash__head">
+            <div>
+                <h2 class="anaqa-section-title">{{ component.title }}</h2>
+                {% if component.subtitle %}
+                    <p class="anaqa-flash__subtitle">{{ component.subtitle }}</p>
+                {% endif %}
+            </div>
+            <div class="anaqa-flash__timer" data-flash-ends="{{ component.ends_at }}"
+                 data-end-text="{{ trans('blocks.home.offer_ended') }}"
+                 aria-label="{{ trans('blocks.home.offer_ends_in') }}"></div>
+        </div>
+        <salla-products-slider
+            data-testid="store-home-flash-discount-products"
+            source="offers"
+            block-title=" "
+            {% if component.display_all_url and component.display_all_url != '#' %}
+                display-all-url="{{ component.display_all_url }}"
+            {% endif %}
+            slider-id="flash-discount-{{ position }}"
+        ></salla-products-slider>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+{#
+| Variable                      | Type     | Description                       |
+|-------------------------------|----------|-----------------------------------|
+| component.title               | ?string  |                                   |
+| component.categories          | object[] | Categories picked by the merchant |
+| component.categories[].name   | string   |                                   |
+| component.categories[].url    | string   |                                   |
+| component.categories[].image  | ?string  |                                   |
+| position                      | int      | Sorting number start from zero    |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-category-stories" class="s-block anaqa-stories">
+    <div class="container">
+        {% if component.title %}
+            <h2 class="anaqa-section-title">{{ component.title }}</h2>
+        {% endif %}
+        <ul class="anaqa-stories__list">
+            {% for cat in component.categories %}
+                <li class="anaqa-stories__item">
+                    <a href="{{ cat.url }}" class="anaqa-stories__link">
+                        <span class="anaqa-stories__ring">
+                            <img src="{{ cat.image ? cat.image : 'images/placeholder.png' | asset }}"
+                                 alt="" width="88" height="88" loading="lazy">
+                        </span>
+                        <span class="anaqa-stories__name">{{ cat.name }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

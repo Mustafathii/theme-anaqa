@@ -1,0 +1,38 @@
+{#
+| Variable               | Type    | Description                                              |
+|------------------------|---------|----------------------------------------------------------|
+| component.image        | string  | Desktop image url                                        |
+| component.mobile_image | ?string | Optional portrait image for small screens                |
+| component.eyebrow      | ?string | Small label above the title                              |
+| component.title        | string  |                                                          |
+| component.subtitle     | ?string |                                                          |
+| component.button_text  | ?string | Button is hidden when empty                              |
+| component.button_url   | ?string | Link picked by the merchant                              |
+| component.centered     | bool    | Center the text block                                    |
+| component.overlay      | bool    | Darken the image so white text stays readable            |
+| position               | int     | Sorting number start from zero                           |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-editorial-hero"
+         class="s-block s-block--full-bg anaqa-hero{{ component.centered ? ' anaqa-hero--centered' : '' }}{{ component.overlay ? ' anaqa-hero--overlay' : '' }}">
+    <picture class="anaqa-hero__media">
+        {% if component.mobile_image %}
+            <source media="(max-width: 767px)" srcset="{{ component.mobile_image }}">
+        {% endif %}
+        <img src="{{ component.image }}" alt="{{ component.title }}" width="1920" height="900"
+             {{ position == 0 ? 'fetchpriority="high"' : 'loading="lazy"' }}>
+    </picture>
+    <div class="container anaqa-hero__content">
+        <div class="anaqa-hero__text">
+            {% if component.eyebrow %}
+                <p class="anaqa-eyebrow">{{ component.eyebrow }}</p>
+            {% endif %}
+            <h2 class="anaqa-hero__title">{{ component.title }}</h2>
+            {% if component.subtitle %}
+                <p class="anaqa-hero__subtitle">{{ component.subtitle }}</p>
+            {% endif %}
+            {% if component.button_text and component.button_url and component.button_url != '#' %}
+                <a href="{{ component.button_url }}" class="anaqa-btn" data-testid="store-home-editorial-hero-cta">{{ component.button_text }}</a>
+            {% endif %}
+        </div>
+    </div>
+</section>

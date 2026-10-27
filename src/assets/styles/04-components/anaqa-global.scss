@@ -1,0 +1,28 @@
+// Anaqa store-wide look: ivory canvas, ink text, announcement bar, portrait product images.
+// Tokens (--anaqa-*) live in anaqa-home.scss.
+
+body.theme-raed {
+  background-color: var(--anaqa-bg);
+  color: var(--anaqa-ink);
+}
+
+.anaqa-announcement {
+  padding: .55rem 1rem;
+  background-color: var(--anaqa-ink);
+  color: var(--anaqa-bg);
+  font-size: .8rem;
+  text-align: center;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+// Fashion stores shoot products in portrait; merchants can switch this off in theme settings.
+.anaqa-portrait-cards .s-product-card-vertical .s-product-card-image {
+  flex: none;
+  height: auto;
+  aspect-ratio: 3 / 4;
+}
