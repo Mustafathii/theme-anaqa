@@ -80,6 +80,12 @@
     max-width: 36rem;
   }
 
+  // no image yet: ink canvas so the white text still reads
+  &--plain {
+    min-height: 50vh;
+    background-color: var(--anaqa-ink);
+  }
+
   &--centered &__content {
     display: flex;
     justify-content: center;
@@ -175,6 +181,8 @@
   .container {
     padding-block: 2rem;
     border-block: 1px solid var(--anaqa-line);
+    // the swiper track is wider than the container; without this the whole page scrolls sideways in RTL
+    overflow: hidden;
   }
 
   &__head {
@@ -206,6 +214,10 @@
       grid-template-columns: 5fr 7fr;
       gap: 4rem;
     }
+  }
+
+  &--no-image &__grid {
+    grid-template-columns: 1fr;
   }
 
   &--image-end &__media {

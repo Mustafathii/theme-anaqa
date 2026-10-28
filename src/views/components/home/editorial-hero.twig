@@ -1,7 +1,7 @@
 {#
 | Variable               | Type    | Description                                              |
 |------------------------|---------|----------------------------------------------------------|
-| component.image        | string  | Desktop image url                                        |
+| component.image        | ?string | Desktop image url; without it the hero sits on ink        |
 | component.mobile_image | ?string | Optional portrait image for small screens                |
 | component.eyebrow      | ?string | Small label above the title                              |
 | component.title        | string  |                                                          |
@@ -13,14 +13,16 @@
 | position               | int     | Sorting number start from zero                           |
 #}
 <section component-id="{{ componentId }}" data-testid="store-home-editorial-hero"
-         class="s-block s-block--full-bg anaqa-hero{{ component.centered ? ' anaqa-hero--centered' : '' }}{{ component.overlay ? ' anaqa-hero--overlay' : '' }}">
-    <picture class="anaqa-hero__media">
-        {% if component.mobile_image %}
-            <source media="(max-width: 767px)" srcset="{{ component.mobile_image }}">
-        {% endif %}
-        <img src="{{ component.image }}" alt="{{ component.title }}" width="1920" height="900"
-             {{ position == 0 ? 'fetchpriority="high"' : 'loading="lazy"' }}>
-    </picture>
+         class="s-block s-block--full-bg anaqa-hero{{ component.centered ? ' anaqa-hero--centered' : '' }}{{ component.overlay ? ' anaqa-hero--overlay' : '' }}{{ component.image ? '' : ' anaqa-hero--plain' }}">
+    {% if component.image %}
+        <picture class="anaqa-hero__media">
+            {% if component.mobile_image %}
+                <source media="(max-width: 767px)" srcset="{{ component.mobile_image }}">
+            {% endif %}
+            <img src="{{ component.image }}" alt="{{ component.title }}" width="1920" height="900"
+                 {{ position == 0 ? 'fetchpriority="high"' : 'loading="lazy"' }}>
+        </picture>
+    {% endif %}
     <div class="container anaqa-hero__content">
         <div class="anaqa-hero__text">
             {% if component.eyebrow %}

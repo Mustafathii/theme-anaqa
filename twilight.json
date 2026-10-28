@@ -347,7 +347,7 @@
                     "id": "image",
                     "label": "الصورة الرئيسية",
                     "format": "image",
-                    "required": true,
+                    "required": false,
                     "placeholder": null,
                     "description": "* المقاس المناسب 1920×900 بكسل"
                 },
@@ -691,7 +691,7 @@
                     "id": "image",
                     "label": "صورة الإطلالة",
                     "format": "image",
-                    "required": true,
+                    "required": false,
                     "placeholder": null,
                     "description": "* صورة طولية، المقاس المناسب 900×1200 بكسل"
                 },

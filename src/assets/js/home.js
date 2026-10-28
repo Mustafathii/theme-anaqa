@@ -11,19 +11,17 @@ class Home extends BasePage {
 
     /**
      * used in views/components/home/flash-discount.twig
-     * Merchant types the end date as YYYY-MM-DD (Riyadh time); salla-count-down wants "MMM DD, YYYY HH:mm:ss".
-     * The Twig `date` filter is localized, so the conversion happens here instead.
+     * Merchant types the end date as YYYY-MM-DD. salla-count-down reads that format as Riyadh time and, with
+     * end-of-day, counts to 23:59:59 (its docs claim "MMM DD, YYYY HH:mm:ss", but the component rejects it).
+     * Here we only hide the section once that moment has passed.
      */
     initFlashDiscount() {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const pad = n => String(n).padStart(2, '0');
-
         app.all('[data-flash-ends]', timer => {
             const raw = (timer.dataset.flashEnds || '').trim();
-            const end = new Date(/^\d{4}-\d{2}-\d{2}$/.test(raw) ? `${raw}T23:59:59+03:00` : raw);
+            const end = new Date(`${raw}T23:59:59+03:00`);
             const block = timer.closest('.anaqa-flash');
 
-            if (isNaN(end.getTime())) {
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(raw) || isNaN(end.getTime())) {
                 return app.log(`Flash discount: invalid end date "${raw}"`);
             }
             if (end <= new Date()) {
@@ -31,7 +29,8 @@ class Home extends BasePage {
             }
 
             const countDown = document.createElement('salla-count-down');
-            countDown.setAttribute('date', `${months[end.getMonth()]} ${pad(end.getDate())}, ${end.getFullYear()} ${pad(end.getHours())}:${pad(end.getMinutes())}:${pad(end.getSeconds())}`);
+            countDown.setAttribute('date', raw);
+            countDown.setAttribute('end-of-day', 'true');
             countDown.setAttribute('boxed', 'true');
             countDown.setAttribute('labeled', 'true');
             countDown.setAttribute('size', 'sm');

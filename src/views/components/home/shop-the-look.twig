@@ -1,7 +1,7 @@
 {#
 | Variable              | Type     | Description                                  |
 |-----------------------|----------|----------------------------------------------|
-| component.image       | string   | Portrait look image                          |
+| component.image       | ?string  | Portrait look image; optional                |
 | component.title       | ?string  |                                              |
 | component.description | ?string  |                                              |
 | component.products    | object[] | Up to 4 products that make up the look       |
@@ -9,11 +9,13 @@
 | position              | int      | Sorting number start from zero               |
 #}
 <section component-id="{{ componentId }}" data-testid="store-home-shop-the-look"
-         class="s-block anaqa-look{{ component.image_end ? ' anaqa-look--image-end' : '' }}">
+         class="s-block anaqa-look{{ component.image_end ? ' anaqa-look--image-end' : '' }}{{ component.image ? '' : ' anaqa-look--no-image' }}">
     <div class="container anaqa-look__grid">
-        <figure class="anaqa-look__media">
-            <img src="{{ component.image }}" alt="{{ component.title }}" width="900" height="1200" loading="lazy">
-        </figure>
+        {% if component.image %}
+            <figure class="anaqa-look__media">
+                <img src="{{ component.image }}" alt="{{ component.title }}" width="900" height="1200" loading="lazy">
+            </figure>
+        {% endif %}
         <div class="anaqa-look__body">
             <p class="anaqa-eyebrow">{{ trans('blocks.home.the_look') }}</p>
             {% if component.title %}
