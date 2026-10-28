@@ -1,0 +1,53 @@
+// Selas header: three-zone grid (menu | centered logo | account + cart) on an ivory bar with a hairline.
+
+.anaqa-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  min-height: 68px;
+
+  &__start {
+    min-width: 0; // lets the menu shrink so "more" can collapse items instead of pushing the logo
+  }
+
+  &__logo {
+    justify-self: center;
+
+    img {
+      max-height: 3rem;
+    }
+  }
+
+  &__end {
+    justify-self: end;
+  }
+}
+
+.store-header {
+  .main-nav-container {
+    background-color: var(--anaqa-bg);
+    box-shadow: none;
+    border-bottom: 1px solid var(--anaqa-line);
+  }
+
+  .top-navbar {
+    border-bottom: 1px solid var(--anaqa-line);
+  }
+
+  .main-menu > li > a {
+    font-weight: 500;
+    color: var(--anaqa-ink);
+  }
+
+  .header-btn__icon {
+    border-color: var(--anaqa-line);
+    color: var(--anaqa-ink);
+  }
+}
+
+[dir="ltr"] .store-header .main-menu > li > a {
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}

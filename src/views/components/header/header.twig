@@ -70,22 +70,23 @@
   <div id="mainnav" class="main-nav-container shadow-default bg-white flex items-center">
       <div class="inner bg-inherit w-full">
           <div class="container">
-              <div class="flex items-stretch justify-between relative">
-                  <div class="flex items-center">
-                      <a data-testid="store-header-mobile-toggle" class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
+              {# Selas: three zones — menu (start), centered logo, account + cart (end) #}
+              <div class="anaqa-nav relative">
+                  <div class="anaqa-nav__start flex items-center">
+                      <a data-testid="store-header-mobile-toggle" class="lg:hidden mburger mburger--collapse leading-none" href="#mobile-menu" aria-label="Open-menu">
                         <i class="sicon-menu text-primary text-2xl"></i>
-                      </a>
-                      <a data-testid="store-header-logo" class="navbar-brand" href="{{ store.url }}">
-                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo|cdn(175) }}" alt="{{ store.name }} logo">
-                          {% if is_page('index') %}
-                            <h1 class="sr-only">{{ store.name }}</h1>
-                          {% else %}
-                            <h2 class="sr-only">{{ store.name }}</h2>
-                          {% endif %}
                       </a>
                       <custom-main-menu></custom-main-menu>
                   </div>
-                  <div class="flex items-center justify-end my-2.5">
+                  <a data-testid="store-header-logo" class="navbar-brand anaqa-nav__logo" href="{{ store.url }}">
+                      <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo|cdn(175) }}" alt="{{ store.name }} logo">
+                      {% if is_page('index') %}
+                        <h1 class="sr-only">{{ store.name }}</h1>
+                      {% else %}
+                        <h2 class="sr-only">{{ store.name }}</h2>
+                      {% endif %}
+                  </a>
+                  <div class="anaqa-nav__end flex items-center justify-end my-2.5">
                       <salla-user-menu data-testid="store-header-user-menu" avatar-only show-header show-trigger></salla-user-menu>
                       <salla-cart-summary data-testid="store-header-cart" class="ml-4 rtl:ml-[unset] rtl:mr-4">
                         <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
