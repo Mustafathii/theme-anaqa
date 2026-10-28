@@ -22,3 +22,17 @@ Styles: `src/assets/styles/04-components/anaqa-home.scss`. Strings: `src/locales
 
 ## Before publishing
 Fill the `TODO` values in `twilight.json` (repository, author_email, support_url) and `package.json` (author).
+
+## Review notes: remaining `|raw`
+Salla's technical review searches for `|raw`. Ten of Raed's 17 uses were removed (`b61a80d`, `4389288`). The 7 below stay because Salla sends these values as HTML, and escaping them would show tags as text:
+
+| File | Value | Why it must render HTML |
+|---|---|---|
+| `pages/product/single.twig` (×2) | `product.description` | Rich-text product description from the dashboard editor |
+| `pages/blog/single.twig` | `article.body` | Rich-text blog article |
+| `pages/page-single.twig` | `page.content` | Rich-text content page |
+| `pages/cart.twig` | free-shipping message | Contains `|money` output, which is HTML (SAR symbol) |
+| `pages/thank-you.twig` | `order.instructions` | Payment instructions (for example bank transfer) with formatting |
+| `pages/customer/orders/single.twig` | `order.refund_message` | Platform-generated refund notice |
+
+None of these accept free HTML from a theme setting or component, which is the other thing the review checks.
