@@ -1,0 +1,44 @@
+// Selas product page: editorial title, ink price, white cards turned into hairline panels, portrait gallery.
+
+.product-single {
+  .main-content {
+    h1 {
+      font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+      line-height: 1.3;
+      font-weight: 700;
+      color: var(--anaqa-ink);
+    }
+
+    // Raed wraps info blocks (SKU, availability, form) in white rounded cards; on ivory we use hairline panels.
+    .bg-white {
+      background-color: transparent;
+      border: 1px solid var(--anaqa-line);
+      border-radius: var(--anaqa-radius);
+    }
+
+    .product__description {
+      padding-inline: 0;
+      color: var(--anaqa-muted);
+    }
+  }
+
+  // regular (non-sale) price in ink; sale prices keep Raed's red so the discount still stands out
+  .starting-or-normal-price .total-price,
+  [data-testid="store-product-price"] .font-bold:not(.text-red-800) {
+    color: var(--anaqa-ink);
+  }
+
+  .details-slider {
+    border-radius: var(--anaqa-radius);
+    background-color: #f1ece5;
+
+    .swiper-slide img {
+      aspect-ratio: 3 / 4;
+    }
+  }
+
+  .breadcrumbs {
+    font-size: .8rem;
+    color: var(--anaqa-muted);
+  }
+}
