@@ -517,7 +517,7 @@
                 "en": "Category Stories",
                 "ar": "تصنيفات بنمط القصص"
             },
-            "icon": "sicon-circle",
+            "icon": "sicon-layout-grid-rearrange",
             "path": "home.category-stories",
             "fields": [
                 {
