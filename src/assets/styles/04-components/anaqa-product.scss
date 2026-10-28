@@ -41,4 +41,43 @@
     font-size: .8rem;
     color: var(--anaqa-muted);
   }
+
+  // Size / colour options come from <salla-product-options>, whose own CSS paints white cards; match our panels.
+  salla-product-options {
+    .s-product-options-wrapper,
+    .s-product-options-option-container,
+    .s-product-options-option {
+      background-color: transparent;
+    }
+
+    .s-product-options-option-container {
+      border: 1px solid var(--anaqa-line);
+      border-radius: var(--anaqa-radius);
+    }
+
+    .s-product-options-option-label {
+      color: var(--anaqa-ink);
+    }
+
+    select,
+    .s-form-control {
+      background-color: transparent;
+      border-color: var(--anaqa-ink);
+      border-radius: var(--anaqa-radius);
+    }
+  }
+}
+
+// Category / products listing page
+.product-index {
+  #page-main-title {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    color: var(--anaqa-ink);
+  }
+
+  #product-filter {
+    background-color: transparent;
+    border-color: var(--anaqa-line);
+    border-radius: var(--anaqa-radius);
+  }
 }
