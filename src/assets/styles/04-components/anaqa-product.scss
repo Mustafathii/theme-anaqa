@@ -44,10 +44,13 @@
 
   // Size / colour options come from <salla-product-options>, whose own CSS paints white cards; match our panels.
   salla-product-options {
+    // the component's CDN stylesheet loads after ours and paints these white; only the outer
+    // containers are overridden so colour swatches keep their own backgrounds
+    &,
     .s-product-options-wrapper,
     .s-product-options-option-container,
     .s-product-options-option {
-      background-color: transparent;
+      background-color: transparent !important;
     }
 
     .s-product-options-option-container {
